@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-
+from rtropo.views import message_received
 
 admin.autodiscover()
 
@@ -10,6 +10,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # RapidSMS core URLs
     (r'^accounts/', include('rapidsms.urls.login_logout')),
+    url(r'^tropo/',
+        message_received,
+        kwargs={'backend_name': 'my-tropo-backend'}),
     url(r'^$', 'rapidsms.views.dashboard', name='rapidsms-dashboard'),
     # RapidSMS contrib app URLs
     (r'^httptester/', include('rapidsms.contrib.httptester.urls')),

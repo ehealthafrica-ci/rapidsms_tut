@@ -130,8 +130,9 @@ FIXTURE_DIRS = (
 )
 
 # A sample logging configuration.
-# This logs all rapidsms messages to the file `rapidsms.log`
-# in the project directory.  It also sends an email to
+# This logs all rapidsms messages to the file `/var/log/rapidsms_tut/rapidsms.log`
+LOG_FILE_NAME = '/var/log/rapidsms_tut/rapidsms.log'
+# It also sends an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
@@ -163,7 +164,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'basic',
-            'filename': os.path.join(PROJECT_PATH, 'rapidsms.log'),
+            'filename': LOG_FILE_NAME,
         },
     },
     'loggers': {
@@ -198,6 +199,7 @@ INSTALLED_APPS = (
     # RapidSMS
     "rapidsms",
     "voting",
+    "rtropo",
     "rapidsms.backends.database",
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.httptester",
@@ -212,6 +214,15 @@ INSTALLED_BACKENDS = {
     "message_tester": {
         "ENGINE": "rapidsms.backends.database.DatabaseBackend",
     },
+    "my-tropo-backend": {
+        "ENGINE": "rtropo.outgoing.TropoBackend",
+        'config': {
+            # Your Tropo application's outbound token for messaging
+            'messaging_token': '9ef79b49d3bb2e46a20abfa1209c6d0066b5764fb306e2abf2b6fde37ac25922733d988c8f7f0958271f8eaf',
+            # Your Tropo application's voice/messaging phone number (including country code)
+            'number': '+1-307-201-3499',
+        },
+    }
 }
 
 LOGIN_REDIRECT_URL = '/'
