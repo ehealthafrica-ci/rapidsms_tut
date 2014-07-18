@@ -3,5 +3,4 @@
 .pyc$
 .sqlite$
 .idea$
-
-
+manage.py
