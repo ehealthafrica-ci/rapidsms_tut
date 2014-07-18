@@ -1,10 +1,8 @@
 #!/usr/bin/env python
-import os
+print('''This file will be replaced by Salt upon installation.
+If you see this message, something is wrong...
+
+Such as: perhaps you did not install using SaltStack.
+''')
 import sys
-
-if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rapidsms_tut.settings")
-
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
+sys.stdin.readline()

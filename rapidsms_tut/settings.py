@@ -21,7 +21,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
+DATABASES = {  ## (this will be overridden below by Salt)
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'rapidsms_tut.sqlite',
