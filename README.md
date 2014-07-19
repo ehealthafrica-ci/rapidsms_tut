@@ -57,16 +57,19 @@ Create a directory and "top" file for your pillar:
     sudo chown <yourself>:<your group> /srv/pillar
         # [ Note: on a live Salt Master, this directory should be _very_ restricted. ]
   
-Create a file called top.sls in your new pillar: It should contain:
+Create a file called top.sls in your new pillar: In order to find your settings file, it should contain:
 
     ## /srv/pillar/top.sls
     base:
       '*':
         - settings
+    # [Note: this is a YAML file. The last two lines are indented by exactly two, and then four spaces.]
 
-[Note: this is a YAML file. The last two lines are indented by exactly two, and then four spaces.]
+Now, create your settings pillar. Put your own values in for the dbname, password and secret key, etc. 
+These values will be used when creating the PostgreSql database, and will be inserted in your new
+django "settings" environment.
 
-    ## settings.sls
+    ## /srv/pillar/settings.sls
     dbengine: django.db.backends.postgresql_psycopg2
     dbname: djangodb
     dbuser: django
@@ -93,23 +96,22 @@ Then... set your virtual environment to the tutorial
 
     workon rapidsms_tut
 
-Run syncdb::
+Run syncdb to load your new Postgres database:
 
-(be prepared to supply your new django user id and a password for the new django Postgres database.)
+    ./manage.py syncdb
+    # (be prepared to supply a username and a password for your new django/admin system.)
 
-    python manage.py syncdb
-
-    python manage.py migrate
+    ./manage.py migrate
 
 You should now be able to run the development server::
 
-    python manage.py runserver
+    ./manage.py runserver
 
 The development server will be running on TCP port 8000 on your local computer...
 but nginx will be listening for connections from anywhere on TCP port 80,
  and will proxy them to your runserver on port 8000.
 
-Operate your new test server by surfing to http://<your new server address> . [Note: no ":8000"]
+Operate your new test server by surfing to `http://<your new server address>` . [Note: no ":8000"]
 
 For the actual operation of the tutorial system, see
 http://rapidsms.readthedocs.org/en/latest/tutorial/index.html
