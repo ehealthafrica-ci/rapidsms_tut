@@ -3,7 +3,7 @@
 import os
 
 # The top directory for this project. Contains requirements/, manage.py,
-# and README.rst, a rapidsms_tut directory with settings etc (see
+# and README.md, a rapidsms_tut directory with settings etc (see
 # PROJECT_PATH), as well as a directory for each Django app added to this
 # project.
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
