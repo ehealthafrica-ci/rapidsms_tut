@@ -220,7 +220,7 @@ INSTALLED_BACKENDS = {
             # Your Tropo application's outbound token for messaging
             'messaging_token': '9ef79b49d3bb2e46a20abfa1209c6d0066b5764fb306e2abf2b6fde37ac25922733d988c8f7f0958271f8eaf',
             # Your Tropo application's voice/messaging phone number (including country code)
-            'number': '1-307-201-3499',
+            'number': '+1-307-201-3499',
         },
     }
 }
