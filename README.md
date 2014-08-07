@@ -33,6 +33,7 @@ https://github.com/eHealthAfrica/formhub/wiki/Using-Salt-Stack-for-deployment-an
 __NOTE:__ This script sets up "/opt/Envs" as the default location for Python virtual environments.
 If you already have a directory for virtual environments, you will want to create a soft link
 for /opt/Envs pointing to your existing directory.
+
 `sudo ln -s /home/<your username>/<your venv directory> /opt/Envs`
 
 *If you are configuring a server already connected to the eHealth Africa Salt master ... 
