@@ -200,7 +200,7 @@ INSTALLED_APPS = (
     "rapidsms",
     "voting",
     "rtropo",
-    'textit'
+    'rapidsms_textit'
     "rapidsms.backends.database",
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.httptester",

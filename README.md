@@ -57,26 +57,15 @@ Create a directory and "top" file for your pillar:
     sudo chown <yourself>:<your group> /srv/pillar
         # [ Note: on a live Salt Master, this directory should be _very_ restricted. ]
   
-Create a file called top.sls in your new pillar: In order to find your settings file, it should contain:
+Copy the files (top.sls and settings.sms) into your new pillar.
 
-    ## /srv/pillar/top.sls
-    base:
-      '*':
-        - settings
-    # [Note: this is a YAML file. The last two lines are indented by exactly two, and then four spaces.]
-
-Now, create your settings pillar. Put your own values in for the dbname, password and secret key, etc. 
+    cp -r ./saltpillar/* /srv/pillar
+    
+Now, edit your settings pillar. Put your own values in for the dbname, password and secret key, etc. 
 These values will be used when creating the PostgreSql database, and will be inserted in your new
 django "settings" environment.
 
-    ## /srv/pillar/settings.sls
-    dbengine: django.db.backends.postgresql_psycopg2
-    dbname: djangodb
-    dbuser: django
-    dbpassword: password
-    dbhost: localhost
-    dbport: 5432
-    secret_key: secret_key
+    nano /srv/pillar/settings.sls
 
 Test your installation:  [Remember, omit "--local" if using a salt master]
 
