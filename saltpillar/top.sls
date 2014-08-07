@@ -5,6 +5,8 @@
 ## /srv/pillar/top.sls
 base:
   '*':  # for any minion
-    - settings  # refer to the file "settings.sls"
+    - settings
+  'local'
+    - tut_settings  # refer to the file "tut_settings.sls"
 # [Note: this is a YAML file. The last two lines are indented by exactly two, and then four spaces.]
 ...
