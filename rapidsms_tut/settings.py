@@ -200,6 +200,7 @@ INSTALLED_APPS = (
     "rapidsms",
     "voting",
     "rtropo",
+    'textit'
     "rapidsms.backends.database",
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.httptester",
@@ -221,6 +222,15 @@ INSTALLED_BACKENDS = {
             'messaging_token': '9ef79b49d3bb2e46a20abfa1209c6d0066b5764fb306e2abf2b6fde37ac25922733d988c8f7f0958271f8eaf',
             # Your Tropo application's voice/messaging phone number (including country code)
             'number': '+1-307-201-3499',
+        },
+    },
+    'test-textit-backend': {
+        'ENGINE': 'textit.outgoing.TextItBackend',
+        'config': {
+            "api_token": "de78a27456b82f8876e48d7ef339f75a1a6cfbd2",
+            "number": "+2348099890451",
+            "query_key": "key=MumbleMumble"  # this string must be sent as part of the URL from text.it
+            # define our webhook URL like: http://vern-test.digvil.org/test_textit/?key=MumbleMumble
         },
     }
 }
