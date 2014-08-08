@@ -12,9 +12,11 @@ python-pkgs:
   file.directory:
     - user: ehealth
     - group: staff
-    - recurse:
-      - user
-      - group
+    #- recurse:
+    #  - user
+    #  - group
+    - file_mode: 664
+    - dir_mode: 775
     - require:
       - user: ehealth
       - group: staff

@@ -166,6 +166,7 @@ LOGGING = {
             'formatter': 'basic',
             'filename': LOG_FILE_NAME,
         },
+
     },
     'loggers': {
         'django.request': {
@@ -178,6 +179,21 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'rtropo.views': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'textit.views': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propigate': True,
+        },
+        'textit.outgoing': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propigate': True,
+        }
     }
 }
 
@@ -200,7 +216,7 @@ INSTALLED_APPS = (
     "rapidsms",
     "voting",
     "rtropo",
-    'rapidsms_textit'
+    'rapidsms_textit',
     "rapidsms.backends.database",
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.httptester",
@@ -225,7 +241,7 @@ INSTALLED_BACKENDS = {
         },
     },
     'test-textit-backend': {
-        'ENGINE': 'textit.outgoing.TextItBackend',
+        'ENGINE': 'rapidsms_textit.outgoing.TextItBackend',
         'config': {
             "api_token": "de78a27456b82f8876e48d7ef339f75a1a6cfbd2",
             "number": "+2348099890451",

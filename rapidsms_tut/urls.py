@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from rtropo.views import message_received
+from rapidsms_textit.views import message_received as textit_received
 
 admin.autodiscover()
 
@@ -10,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # RapidSMS core URLs
     (r'^accounts/', include('rapidsms.urls.login_logout')),
+    url(r"^test_textit/$", textit_received, kwargs={'backend_name': 'test-textit-backend'}, name='textit'),
     url(r'^tropo/',
         message_received,
         kwargs={'backend_name': 'my-tropo-backend'}),
@@ -23,4 +25,4 @@ urlpatterns = patterns('',
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

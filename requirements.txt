@@ -1,5 +1,5 @@
 Django>=1.5,<1.6
-RapidSMS==0.16.0
-South==0.7.6
+RapidSMS
+South
 rapidsms-tropo>=0.2.0
 -e git+https://github.com/eHealthAfrica/rapidsms_textit.git#egg=rapidsms_textit
